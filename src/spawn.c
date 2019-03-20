@@ -1,6 +1,7 @@
+#include "saveManager.h"
+
 #define RGB16(r,g,b)  ((r)+(g<<5)+(b<<10)) 
 #define gameColour  (RGB16(10,5,25))
-#define GAMEPAK_RAM  ((short*)0x0E000000)
 
 
 void logoScreen(unsigned short* Screen)
@@ -29,14 +30,8 @@ int main()
 
 	fillScreen(Screen, gameColour);
 
-	unsigned short *saveMemory = GAMEPAK_RAM;
-
-	// Save some stuff.
-	saveMemory[0] = 2;
-	saveMemory[1] = 5; //This actually saves it to the .sav (remains the set value on object)
-
-	if(saveMemory[0] == 2){
-		Screen[100+50*240] = RGB16(99,0,0); //To see what we have :)
+	if(readSaveData(8388607) == 255){
+		Screen[150+100*240] = RGB16(5000,0,0); //debug
 	}
 
 	for(x = 20; x<=60; x+=15)
