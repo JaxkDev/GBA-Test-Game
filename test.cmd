@@ -4,7 +4,7 @@ echo --- Cleaning tmp ---
 rm main.o
 rm main.elf
 rm main.gba
-rm -rf dist
+rm dist/main.gba
 echo --- Building ROM ---
 arm-none-eabi-gcc -c src/main.c -mthumb-interwork -mthumb -O2 -o main.o
 arm-none-eabi-gcc main.o -mthumb-interwork -mthumb -specs=gba.specs -o main.elf
