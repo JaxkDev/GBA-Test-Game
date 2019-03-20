@@ -1,0 +1,10 @@
+.vscode
+dist/*
+
+*.o
+*.elf
+*.gba
+*.sav
+
+*.private
+*.hed
