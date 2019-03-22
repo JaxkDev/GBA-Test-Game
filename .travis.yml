@@ -30,7 +30,4 @@ before_script:
   - arm-none-eabi-gcc --version
 
 script:
-  - arm-none-eabi-gcc -c src/spawn.c -mthumb-interwork -mthumb -O2 -o spawn.o
-  - arm-none-eabi-gcc -c src/saveManager.c -mthumb-interwork -mthumb -O2 -o saveManager.o
-  - arm-none-eabi-gcc saveManager.o spawn.o -mthumb-interwork -mthumb -o game.elf
-  - arm-none-eabi-objcopy -v -O binary game.elf game.gba
+  - make
