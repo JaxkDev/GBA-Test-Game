@@ -1,4 +1,4 @@
-# Thanks to DevKitPro for their example makefile, never used them before.
+# Thanks to DevKitPro for their example makefile, never used them before. (All credit to them, regardless of repo license !)
 
 #---------------------------------------------------------------------------------
 .SUFFIXES:

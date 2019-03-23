@@ -22,41 +22,17 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#include <string.h>
-#include "letter.h"
-#include "helloWorld.h"
-
-typedef unsigned char      uint8;
-typedef unsigned short     uint16;
-typedef unsigned int       uint32;
-
-typedef uint16 ScreenBlock[1024];
-typedef uint16 Tile[32];
-typedef Tile TileBlock[256];
-
-#define VIDEOMODE_0    0x0000
-#define BACKGROUND_0   0x0100
-
-#define REG_DISPLAYCONTROL     *((volatile uint16*)(0x04000000))
-#define REG_BG0_CONTROL        *((volatile uint32*)(0x04000008))
-
-#define MEM_VRAM                ((volatile uint32*)0x6000000)
-#define MEM_TILE                ((TileBlock*)0x6000000)
-#define MEM_SCREENBLOCKS        ((ScreenBlock*)0x6000000)
-
-#define MEM_BG_PALETTE          ((uint16*)(0x05000000))
-
 int main()
 {
-    //load data
-    memcpy(MEM_BG_PALETTE, letter, 48); //todo
-    memcpy(&MEM_TILE[0][0], helloWorld, 6); //todo
+    *(unsigned int*)0x04000000= 0x0403;
 
-    REG_BG0_CONTROL = 0x0180;// 0000 0001 1000 0000;
-    REG_DISPLAYCONTROL =  VIDEOMODE_0 | BACKGROUND_0;
+	((unsigned short*)0x06000000)[120+80*240]= 0x001F;
+	((unsigned short*)0x06000000)[136+80*240]= 0x03E0;  //three dots in a square
+	((unsigned short*)0x06000000)[120+96*240]= 0x7C00;
+    ((unsigned short*)0x06000000)[136+96*240]= 0x001F;
 
     while(1)
     {
     }
     return 0;
-}
+}   
