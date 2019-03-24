@@ -26,7 +26,7 @@ TARGET		:= Game
 BUILD		:= build
 SOURCES		:= src
 INCLUDES	:= include
-DATA		:=
+DATA		:= data
 MUSIC		:=
 
 #---------------------------------------------------------------------------------
